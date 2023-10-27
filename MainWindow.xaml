@@ -1,0 +1,619 @@
+﻿<Window x:Class="ATM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATM"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="450"
+        Width="800">
+    <Grid>
+        <Grid x:Name="login"
+              Visibility="Visible">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Content="Voer uw rekening nummer in"
+                   Margin="10"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Width="200" />
+            <TextBox x:Name="accountnumber_text"
+                     Grid.Row="1"
+                     Grid.Column="1"
+                     Text="asdfasfd"
+                     Margin="10"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Top"></TextBox>
+            <Button x:Name="continue_pincode"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Content="Doorgaan"
+                    Margin="10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="Green"
+                    Click="Button_Click"></Button>
+        </Grid>
+        <Grid x:Name="admin_login"
+              Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="1"
+                     HorizontalAlignment="Center"
+                     Width="60"
+                     VerticalAlignment="Center"
+                     x:Name="pin_admin_input"></TextBox>
+            <Grid x:Name="admin_pincode"
+                  Grid.Row="2">
+                <Grid HorizontalAlignment="center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Column="0"
+                            Grid.Row="0"
+                            Height="50"
+                            Width="50"
+                            Content="1"
+                            Click="admin_NumberButton_Click"></Button>
+                    <Button Grid.Column="0"
+                            Grid.Row="1"
+                            Height="50"
+                            Width="50"
+                            Content="4"
+                            Click="admin_NumberButton_Click"></Button>
+                    <Button Grid.Column="0"
+                            Grid.Row="2"
+                            Height="50"
+                            Width="50"
+                            Content="7"
+                            Click="admin_NumberButton_Click"></Button>
+                    <Button Grid.Column="0"
+                            Grid.Row="3"
+                            Height="50"
+                            Width="50"
+                            Background="Red"
+                            Content="DEL"
+                            VerticalAlignment="Top"
+                            Click="admin_Delete_Button_Click"></Button>
+                    <Button Grid.Column="1"
+                            Grid.Row="0"
+                            Height="50"
+                            Width="50"
+                            Content="2"
+                            Click="admin_NumberButton_Click"></Button>
+                    <Button Grid.Column="1"
+                            Grid.Row="1"
+                            Height="50"
+                            Width="50"
+                            Content="5"
+                            Click="admin_NumberButton_Click"></Button>
+                    <Button Grid.Column="1"
+                            Grid.Row="2"
+                            Height="50"
+                            Width="50"
+                            Content="8"
+                            Click="admin_NumberButton_Click"></Button>
+                    <Button Grid.Column="1"
+                            Grid.Row="3"
+                            Height="50"
+                            Width="50"
+                            Content="0"
+                            Click="admin_NumberButton_Click"></Button>
+                    <Button Grid.Column="2"
+                            Grid.Row="0"
+                            Height="50"
+                            Width="50"
+                            Content="3"
+                            Click="admin_NumberButton_Click"></Button>
+                    <Button Grid.Column="2"
+                            Grid.Row="1"
+                            Height="50"
+                            Width="50"
+                            Content="6"
+                            Click="admin_NumberButton_Click"></Button>
+                    <Button Grid.Column="2"
+                            Grid.Row="2"
+                            Height="50"
+                            Width="50"
+                            Content="9"
+                            Click="admin_NumberButton_Click"></Button>
+                    <Button Grid.Column="2"
+                            Grid.Row="3"
+                            Height="50"
+                            Width="50"
+                            Background="Green"
+                            Content="OK"
+                            Click="admin_enter_pincode_Click"></Button>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid x:Name="enter_pincode"
+              Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="1"
+                     HorizontalAlignment="Center"
+                     Width="60"
+                     VerticalAlignment="Center"
+                     x:Name="pin_input"></TextBox>
+            <Grid x:Name="pincode"
+                  Grid.Row="2">
+                <Grid HorizontalAlignment="center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Column="0"
+                            Grid.Row="0"
+                            Height="50"
+                            Width="50"
+                            Content="1"
+                            Click="NumberButton_Click"></Button>
+                    <Button Grid.Column="0"
+                            Grid.Row="1"
+                            Height="50"
+                            Width="50"
+                            Content="4"
+                            Click="NumberButton_Click"></Button>
+                    <Button Grid.Column="0"
+                            Grid.Row="2"
+                            Height="50"
+                            Width="50"
+                            Content="7"
+                            Click="NumberButton_Click"></Button>
+                    <Button Grid.Column="0"
+                            Grid.Row="3"
+                            Height="50"
+                            Width="50"
+                            Background="Red"
+                            Content="DEL"
+                            VerticalAlignment="Top"
+                            Click="Delete_Button_Click"></Button>
+                    <Button Grid.Column="1"
+                            Grid.Row="0"
+                            Height="50"
+                            Width="50"
+                            Content="2"
+                            Click="NumberButton_Click"></Button>
+                    <Button Grid.Column="1"
+                            Grid.Row="1"
+                            Height="50"
+                            Width="50"
+                            Content="5"
+                            Click="NumberButton_Click"></Button>
+                    <Button Grid.Column="1"
+                            Grid.Row="2"
+                            Height="50"
+                            Width="50"
+                            Content="8"
+                            Click="NumberButton_Click"></Button>
+                    <Button Grid.Column="1"
+                            Grid.Row="3"
+                            Height="50"
+                            Width="50"
+                            Content="0"
+                            Click="NumberButton_Click"></Button>
+                    <Button Grid.Column="2"
+                            Grid.Row="0"
+                            Height="50"
+                            Width="50"
+                            Content="3"
+                            Click="NumberButton_Click"></Button>
+                    <Button Grid.Column="2"
+                            Grid.Row="1"
+                            Height="50"
+                            Width="50"
+                            Content="6"
+                            Click="NumberButton_Click"></Button>
+                    <Button Grid.Column="2"
+                            Grid.Row="2"
+                            Height="50"
+                            Width="50"
+                            Content="9"
+                            Click="NumberButton_Click"></Button>
+                    <Button Grid.Column="2"
+                            Grid.Row="3"
+                            Height="50"
+                            Width="50"
+                            Background="Green"
+                            Content="OK"
+                            Click="enter_pincode_Click"></Button>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid x:Name="MainMenu"
+              Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="welkomGebruiker"
+                       Grid.Column="1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"></TextBlock>
+            <TextBlock x:Name="uwSaldo"
+                       Grid.Column="1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"></TextBlock>
+            <Button x:Name="Opnemen"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    HorizontalAlignment="Left"
+                    Width="75"
+                    Height="50"
+                    Content="Opnemen"
+                    VerticalAlignment="Center"
+                    Click="Opnemen_Click"></Button>
+            <Button x:Name="Storten"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    HorizontalAlignment="Right"
+                    Width="75"
+                    Height="50"
+                    Content="Storten"
+                    VerticalAlignment="Center"
+                    Click="Storten_Click"></Button>
+            <Button x:Name="laatsteTransactiesButton"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Content="Laatste 3 transacties"
+                    Click="showTransactions_Click"></Button>
+        </Grid>
+        <Grid x:Name="opnemen"
+              Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Width="30"
+                    Height="30">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius"
+                                Value="40" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <TextBlock Text="Selecteer hier het bedrag wat u wil opnemen"
+                       Grid.Column="1"
+                       Grid.Row="0"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"></TextBlock>
+            <TextBox Text=""
+                     Width="50"
+                     x:Name="opneemBedrag"
+                     Grid.Column="1"
+                     Grid.Row="0"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"></TextBox>
+            <Button Content="opnemen"
+                    x:Name="opnemenKlik"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Width="75"
+                    Height="40"
+                    Click="opnemenGeld_Click"></Button>
+            <Button Content="Terug"
+                    x:Name="Terug_Opnemen"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="75"
+                    Height="40"
+                    Click="TerugOpnemen_Click"></Button>
+            <Grid x:Name="opneem_touchpad"
+                  Grid.Row="2"
+                  Grid.Column="1">
+                <Grid HorizontalAlignment="center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Column="0"
+                            Grid.Row="0"
+                            Height="50"
+                            Width="50"
+                            Content="1"
+                            Click="opneemNumber_Click"></Button>
+                    <Button Grid.Column="0"
+                            Grid.Row="1"
+                            Height="50"
+                            Width="50"
+                            Content="4"
+                            Click="opneemNumber_Click"></Button>
+                    <Button Grid.Column="0"
+                            Grid.Row="2"
+                            Height="50"
+                            Width="50"
+                            Content="7"
+                            Click="opneemNumber_Click"></Button>
+                    <Button Grid.Column="0"
+                            Grid.Row="3"
+                            Height="50"
+                            Width="50"
+                            Background="Red"
+                            Content="DEL"
+                            VerticalAlignment="Top"
+                            Click="Delete_opneemNumber_Click"
+                            HorizontalAlignment="Left"></Button>
+                    <Button Grid.Column="1"
+                            Grid.Row="0"
+                            Height="50"
+                            Width="50"
+                            Content="2"
+                            Click="opneemNumber_Click"></Button>
+                    <Button Grid.Column="1"
+                            Grid.Row="1"
+                            Height="50"
+                            Width="50"
+                            Content="5"
+                            Click="opneemNumber_Click"></Button>
+                    <Button Grid.Column="1"
+                            Grid.Row="2"
+                            Height="50"
+                            Width="50"
+                            Content="8"
+                            Click="opneemNumber_Click"></Button>
+                    <Button Grid.Column="1"
+                            Grid.Row="3"
+                            Height="50"
+                            Width="50"
+                            Content="0"
+                            Click="opneemNumber_Click"></Button>
+                    <Button Grid.Column="2"
+                            Grid.Row="0"
+                            Height="50"
+                            Width="50"
+                            Content="3"
+                            Click="opneemNumber_Click"></Button>
+                    <Button Grid.Column="2"
+                            Grid.Row="1"
+                            Height="50"
+                            Width="50"
+                            Content="6"
+                            Click="opneemNumber_Click"></Button>
+                    <Button Grid.Column="2"
+                            Grid.Row="2"
+                            Height="50"
+                            Width="50"
+                            Content="9"
+                            Click="opneemNumber_Click"></Button>
+                    <Button Grid.Column="2"
+                            Grid.Row="3"
+                            Height="50"
+                            Width="50"
+                            Background="Green"
+                            Content="OK"
+                            Click="enter_pincode_Click"></Button>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid x:Name="storten"
+              Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Selecteer hier het bedrag wat u wil storten"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"></TextBlock>
+            <TextBox Text="€0000"
+                     x:Name="stortenBedrag"
+                     Grid.Column="1"
+                     Grid.Row="1"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"></TextBox>
+            <Button Content="storten"
+                    x:Name="stortenKlik"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Width="75"
+                    Height="40"
+                    Click="stortenGeld_Click"></Button>
+            <Button Content="Terug"
+                    x:Name="Terug_Storten"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="75"
+                    Height="40"
+                    Click="TerugStorten_Click"></Button>
+        </Grid>
+        <Grid x:Name="laatsteTransactiesGrid"
+              Visibility="Hidden">
+            <DataGrid Name="dataGrid"
+                      AutoGenerateColumns="True"
+                      IsReadOnly="True">
+                <DataGrid.Columns>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid x:Name="admin_Rekeningen"
+              Visibility="Hidden">
+            <ListBox x:Name="Rekeningen_admin"
+                     SelectionChanged="ListBox_SelectionChanged"
+                     d:ItemsSource="{d:SampleData ItemCount=5}"
+                     Margin="10,10,520,10" />
+            <Label Content="Label"
+                   HorizontalAlignment="Center"
+                   Margin="250,35,0,325"
+                   Height="30"
+                   x:Name="SelectedBankLabel" />
+            <Button Content="Wijzig saldo"
+                    x:Name="updateSaldo_Admin"
+                    HorizontalAlignment="Center"
+                    Margin="100,120,0,0"
+                    VerticalAlignment="Top"
+                    Height="54"
+                    Width="92"
+                    Click="updateSaldo_Admin_Click" />
+            <Button Content="Pincode wijzigen"
+                    HorizontalAlignment="Center"
+                    Margin="400,120,0,0"
+                    VerticalAlignment="Top"
+                    Height="54"
+                    Width="92"
+                    Click="changePin_Admin_Click" />
+            <Button Content="Rekening wissen"
+                    x:Name="DeleteAccount_Admin"
+                    Click="deleteAccount_Admin_Click"
+                    HorizontalAlignment="Center"
+                    Margin="400,120,0,180"
+                    VerticalAlignment="Bottom"
+                    Height="54"
+                    Width="92" />
+
+            <Button Content="Nieuwe rekening"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Height="54"
+                    Width="92"
+                    Margin="100, 180, 0, 180"
+                    Click="voegRekening_Admin_Click"/>
+        </Grid>
+        <Grid x:Name="wijzigSaldo_Admin_Grid"
+              Visibility="Hidden">
+            <Label Content="Huidige saldo:"
+                   HorizontalAlignment="Center"
+                   Margin="0,60,0,0"
+                   VerticalAlignment="Top" />
+            <TextBox x:Name="currentBalance_admin"
+                     HorizontalAlignment="Center"
+                     Margin="0,85,0,0"
+                     VerticalAlignment="Top" />
+            <Button Content="Wijzig saldo"
+                    Margin="360,139,359,256"
+                    Width="75"
+                    HorizontalAlignment="Center"
+                    Click="updateCurrentSaldo_Admin_Click" />
+
+        </Grid>
+        <Grid x:Name="wijzigpinCode_Admin_Grid"
+              Visibility="Hidden">
+            <Label Content="Voer hier de nieuwe pincode in:"
+                   HorizontalAlignment="Center"
+                   Margin="0,60,0,0"
+                   VerticalAlignment="Top" />
+            <TextBox x:Name="wijzigPincode_admin"
+                     HorizontalAlignment="Center"
+                     Margin="0,85,0,0"
+                     VerticalAlignment="Top" />
+            <Button Content="Wijzig pincode"
+                    Margin="360,139,359,256"
+                    Width="75"
+                    HorizontalAlignment="Center"
+                    Click="changeCurrentPin_Admin_Click" />
+
+        </Grid>
+        <Grid x:Name="VoegRekeningToe_Admin_Grid" Visibility="Hidden">
+            <Label HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Content="Voeg hier het rekening nummer in"
+                   Margin="0, 50, 0, 0"/>
+            <TextBox
+                x:Name="rekeningNummer_Toevoeg"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Margin="0, 75, 0, 0"
+                Width="75"/>
+            <Label HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Content="Vul hier de pincode in"
+                   Margin="0, 100, 0, 0" />
+            <TextBox x:Name="pinCode_Toevoeg"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Top"
+                     Margin="0, 125, 0, 0"
+                     Width="75"/>
+            <Label HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Content="Vul hier het saldo in"
+                   Margin="0, 150, 0, 0"/>
+            <TextBox x:Name="saldo_Toevoeg"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Top"
+                     Width="75"
+                     Margin="0, 175, 0, 0"/>
+            <Button x:Name="voegAccounttoe_Toevoeg"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    Margin="0, 225, 0, 0"
+                    Width="100"
+                    Height="20"
+                    Content="Voeg account toe"
+                    Click="voegAccountToe"/>
+        </Grid>
+        </Grid>
+
+</Window>
